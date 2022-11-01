@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>One Click</title>
+        <style>
+            div{
+                
+            }
+            .one
+            {
+                text-align: center;
+                font-size: 30px;
+                color: white;
+                padding: 10px;
+                display: flex;
+                background-color:limegreen;  
+                height: 50px; 
+                justify-content: right; 
+                width:98%;
+                align-items: right;
+				overflow: hidden;
+				border: 1px solid #ccc;
+            }
+            .two
+            {
+                text-align: center;
+                font-size: 30px;
+                color: rgb(17, 16, 16);
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 500px;
+                width:67%;
+                background-color:rgb(250, 252, 251);
+                float: left;
+            }
+            .three
+            {
+                text-align: center;
+                font-size: 30px;
+                color: rgb(17, 16, 16);
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 500px;
+                width:30%;
+                background-color:rgb(255, 170, 0); 
+                float: left;
+            }
+
+
+/* Style the buttons inside the tab */
+.one button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.one button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.one button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.onecontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+        </style>
+      
+    </head>
+    
+    <body>
+        <h1 style="color:crimson; text-align:center;">One Click</h1>
+<div class="one">
+  <button class="tablinks" onclick="openSite(event, 'Amazon')">Amazon</button>
+  <button class="tablinks" onclick="openSite(event, 'Walmart')">Walmart</button>
+  <button class="tablinks" onclick="openSite(event, 'Target')">Target</button>
+  <form id="form"> 
+  <input type="search" id="query" name="q" placeholder="Search...">
+  </form>
+</div>
+    
+<div class="three">Tabs to navigate</div>		
+	
+<div class="two">
+			
+<div id="Amazon" class="onecontent">
+  <h3>Amazon</h3>
+  <p>Price in Amazon is $$</p>
+</div>
+
+<div id="Walmart" class="onecontent">
+  <h3>Walmart</h3>
+  <p>Price in Walmart is $$</p> 
+</div>
+
+<div id="Target" class="onecontent">
+  <h3>Target</h3>
+  <p>Price in target is $$</p>
+</div>
+
+<script>
+function openSite(evt, cityName) {
+  var i, onecontent, onelinks;
+  onecontent = document.getElementsByClassName("onecontent");
+  for (i = 0; i < onecontent.length; i++) {
+    onecontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>			
+</div>
+		
+			
+    </body>
+</html>
