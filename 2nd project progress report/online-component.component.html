@@ -1,0 +1,99 @@
+<div *ngIf="show">
+  <div *ngIf="mobile_view">
+    <div *ngIf="view_status">
+      <ng-container *ngFor="let product of onlineArray" style="width: 100%;">
+        <mat-card style="margin-top: 10px;width: 100%;">
+          <table style="width: 100%;">
+            <tr>
+              <td rowspan="3" style="width: 300px;height: 300px;"><a href="{{product.href}}" target="blank"><img src="{{product.image}}" style="max-width: 10rem;max-height: 12.5rem;"></a></td>
+              <td colspan="2"><a href="{{product.href}}" class="title" target="blank"><span>{{product.title}}</span></a>
+                <br>
+                <span *ngFor="let rate_bool of product.rating_bool">
+                  <span *ngIf="rate_bool">
+                    <clr-icon shape="star" class="is-solid"></clr-icon>
+                  </span>
+                  <span *ngIf="!rate_bool">
+                    <clr-icon shape="star"></clr-icon>
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <!--WEBSITE-->
+              <td [ngSwitch]="product.website" style="max-width: 18.125rem;">
+                <span *ngSwitchCase="'amazon'">
+                  <a href="{{websiteArray.amazon.url}}" target="blank">
+                    <img src="{{websiteArray.amazon.src}}" style="max-width: 7.7rem;max-height: 1.5rem;">
+                  </a>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td><clr-icon shape="rupee"></clr-icon>{{product.price}}</td>
+              <td></td>
+            </tr>
+          </table>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+
+
+  <div *ngIf="!mobile_view">
+    <div *ngIf="view_status" style="font-size: 2.5vw;">
+      <ng-container *ngFor="let product of onlineArray" style="width: 100%;">
+        <mat-card style="margin-top: 10px;width: 100%;">
+          <table style="width: 100%;">
+            <tr>
+              <td rowspan="3" style="max-width: 15em;max-height: 12.5em;"><a href="{{product.href}}" target="blank"><img src="{{product.image}}" style="max-width: 10em;max-height: 12.5em;"></a></td>
+              <td colspan="2"><a href="{{product.href}}" class="title" target="blank"><span>{{product.title}}</span></a>
+                <br>
+                <span *ngFor="let rate_bool of product.rating_bool">
+                  <span *ngIf="rate_bool">
+                    <clr-icon shape="star" class="is-solid" size="10"></clr-icon>
+                  </span>
+                  <span *ngIf="!rate_bool">
+                    <clr-icon shape="star" size="10"></clr-icon>
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <!--WEBSITE-->
+              <td [ngSwitch]="product.website" style="max-width: 18.125em;">
+                <span *ngSwitchCase="'amazon'">
+                  <a href="{{websiteArray.amazon.url}}" target="blank">
+                    <img src="{{websiteArray.amazon.src}}" style="max-width: 7.7em;max-height: 1.5em;">
+                  </a>
+                </span>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><clr-icon shape="dollar"></clr-icon>{{product.price}}</td>
+              <td></td>
+            </tr>
+          </table>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+
+  <div *ngIf="!view_status">
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <img src="{{websiteArray.amazon.src}}" style="max-width: 7.7rem;max-height: 1.5rem;">
+        </ng-template>
+        <app-amazon></app-amazon>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
+
+<div *ngIf="!show">
+  <span>
+    Sorry no results to display
+  </span>
+</div>
